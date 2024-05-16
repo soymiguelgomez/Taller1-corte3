@@ -1,0 +1,44 @@
+
+@startuml
+
+class Usuario {
+  - id: int
+  - nombre: string
+  - direccion: string
+  - correoElectronico: string
+  - contrasena: string
+  + registrarUsuario ()
+}
+
+class Libro {
+  - titulo: string
+  - autor: string
+  - categoria: string
+  - isbn: string
+  - anoPublicacion: int
+  - disponibilidad: boolean
+  + buscarLibro ()
+}
+
+class Prestamo {
+  - usuario: Usuario
+  - libro: Libro
+  - fechaPrestamo: date
+  - fechaVencimiento: date
+  - multa: float
+  + solicitarPrestamo ()
+  + renovarPrestamo (): 
+}
+
+class Inventario {
+  - libros: Libro[]
+  + agregarLibro ()
+  + eliminarLibro ()
+  + generarInforme ()
+}
+
+Usuario --  Libro
+Libro --  Prestamo  
+Prestamo   --  Inventario
+
+@enduml
